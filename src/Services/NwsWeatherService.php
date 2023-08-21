@@ -16,5 +16,7 @@
         public function getObservations() : void
         {
             $res = $this->api->observations(config('weather.station'));
+
+            dd($res);
         }
     }
