@@ -47,6 +47,7 @@
 
         public function __toString(): string
         {
-            return sprintf('Current Weather: %s, %f degF/ %f degC', $this->description, $this->tempF, $this->tempC);
+            return sprintf('Current Weather: %s, %f degF/ %f degC', $this->description,
+                round($this->tempF, 0), round($this->tempC, 0));
         }
     }
