@@ -27,18 +27,22 @@
 
         private function hydrate(mixed $data = null): void
         {
-            $this->description = $data->textDescription;
+            if (method_exists($data, 'getProperties'))
+            {
+                $props = $data->getProperties();
 
+                $this->description = $props['textDescription'];
 
-            // Celsius
-            $this->tempC = $data->temperature->value;
-            $this->dewpointC = $data->dewpoint->value;
-            $this->heatIndexC = $data->heatIndex->value;
+                // Celsius
+                $this->tempC = (float)$props['temperature']->value;
+                $this->dewpointC = (float)$props['dewpoint']->value;
+                $this->heatIndexC = (float)$props['heatIndex']->value;
 
-            // Fahrenheit
-            $this->tempF = Temperature::C2F($data->temperature->value);
-            $this->dewpointF = Temperature::C2F($data->temperature->value);
-            $this->heatIndexF = Temperature::C2F($data->temperature->value);
+                // Fahrenheit
+                $this->tempF = Temperature::C2F($this->tempC);
+                $this->dewpointF = Temperature::C2F($this->dewpointC);
+                $this->heatIndexF = Temperature::C2F($this->heatIndexC);
+            }
         }
 
         public function __toString(): string
