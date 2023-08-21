@@ -15,7 +15,11 @@
 
         public function register() {
             $this->app->singleton(NwsWeatherService::class, function () {
-                return new NwsWeatherService(new NwsApiClient());
+                $client = new NwsApiClient([
+                        'agent' => env('APP_AGENT_NAME', env('APP_NAME')),
+                        'contact' => env('APP_CONTACT_EMAIL')
+                ]);
+                return new NwsWeatherService($client);
             });
         }
     }

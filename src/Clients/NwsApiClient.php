@@ -6,10 +6,14 @@
 
     class NwsApiClient
     {
-        public function __construct()
+        public function __construct(array $options = [])
         {
+
             $this->client = new Client([
-                'base_uri' => 'https://api.weather.gov'
+                'base_uri' => 'https://api.weather.gov',
+                'headers' => [
+                    'User-Agent' => sprintf('(%s %s)', $options['agent'], $options['contact'])
+                ]
             ]);
         }
 
