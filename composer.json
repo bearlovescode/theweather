@@ -12,5 +12,10 @@
             "email": "1134853+theothernic@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^8.1",
+        "ml/json-ld": "^1.2",
+        "guzzlehttp/guzzle": "^7.7",
+        "illuminate/support": "^10.19"
+    }
 }
