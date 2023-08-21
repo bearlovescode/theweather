@@ -17,5 +17,12 @@
         "ml/json-ld": "^1.2",
         "guzzlehttp/guzzle": "^7.7",
         "illuminate/support": "^10.19"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bearlovescode\\Theweather\\Providers\\WeatherServiceProvider"
+            ]
+        }
     }
 }
