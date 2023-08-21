@@ -12,7 +12,8 @@
             $this->client = new Client([
                 'base_uri' => 'https://api.weather.gov',
                 'headers' => [
-                    'User-Agent' => sprintf('(%s %s)', $options['agent'], $options['contact'])
+                    'User-Agent' => sprintf('(%s %s)', $options['agent'], $options['contact']),
+                    'Accept' => 'application/json+ld'
                 ]
             ]);
         }
