@@ -3,7 +3,7 @@
 
     use Bearlovescode\Theweather\Clients\NwsApiClient;
 
-    class NwsWeatherService
+    class NwsWeatherService implements IWeatherService
     {
 
         private NwsApiClient $api;
