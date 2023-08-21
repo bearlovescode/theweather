@@ -28,7 +28,7 @@
         private function hydrate(mixed $data = null): void
         {
 
-            $this->description = $data->description;
+            $this->description = $data->textDescription;
 
 
             // Celsius
