@@ -27,8 +27,6 @@
 
         private function hydrate(mixed $data = null): void
         {
-
-            dd($data);
             $this->description = $data->textDescription;
 
 
