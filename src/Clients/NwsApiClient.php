@@ -20,7 +20,7 @@
             ]);
         }
 
-        public function observations(string $stationId)
+        public function observation(string $stationId)
         {
 
             try {

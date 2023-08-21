@@ -2,6 +2,7 @@
     namespace Bearlovescode\Theweather\Services;
 
     use Bearlovescode\Theweather\Clients\NwsApiClient;
+    use Bearlovescode\Theweather\Models\CurrentWeather;
 
     class NwsWeatherService implements IWeatherService
     {
@@ -13,10 +14,10 @@
             $this->api = $apiClient;
         }
 
-        public function getObservations() : void
+        public function getObservation() : CurrentWeather
         {
-            $res = $this->api->observations(config('weather.station'));
+            $res = $this->api->observation(config('weather.station'));
 
-            dd($res);
+            return new CurrentWeather($res);
         }
     }
