@@ -1,7 +1,9 @@
 <?php
     namespace Bearlovescode\Theweather\Clients;
 
+    use GeoJson\GeoJson;
     use GuzzleHttp\Client;
+    use GuzzleHttp\Exception\ClientException;
     use Psr\Container\NotFoundExceptionInterface;
 
     class NwsApiClient
@@ -25,12 +27,13 @@
                 $res = $this->client->request('GET',
                     sprintf('/stations/%s/observations/latest', $stationId));
 
+                $data = $res->getBody()->getContents();
 
-                dd($res);
+                return GeoJson::jsonUnserialize(json_decode($data));
 
             }
 
-            catch (NotFoundExceptionInterface $e)
+            catch (ClientException $e)
             {
 
             }
