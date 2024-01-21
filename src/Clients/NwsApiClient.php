@@ -37,8 +37,10 @@
             {
 
             }
+        }
 
-
+        public function getForecast(string $stationId)
+        {
 
         }
     }

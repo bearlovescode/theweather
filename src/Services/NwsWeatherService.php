@@ -3,6 +3,7 @@
 
     use Bearlovescode\Theweather\Clients\NwsApiClient;
     use Bearlovescode\Theweather\Models\CurrentWeather;
+    use Bearlovescode\Theweather\Models\Forecast;
 
     class NwsWeatherService implements IWeatherService
     {
@@ -19,5 +20,11 @@
             $res = $this->api->observation(config('weather.station'));
 
             return new CurrentWeather($res);
+        }
+
+        public function getForecast(string $stationId) : Forecast
+        {
+            return new Forecast();
+
         }
     }
