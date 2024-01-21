@@ -39,7 +39,7 @@
             }
         }
 
-        public function getForecast(string $stationId)
+        public function forecast(string $stationId)
         {
 
         }

@@ -12,12 +12,19 @@
             "email": "1134853+theothernic@users.noreply.github.com"
         }
     ],
+    "repositories": [
+        {
+            "type" : "git",
+            "url": "https://github.com/bearlovescode/datamodels.git"
+        }
+    ],
     "require": {
         "php": "^8.1",
         "ml/json-ld": "^1.2",
         "guzzlehttp/guzzle": "^7.7",
         "illuminate/support": "^10.19",
-        "jmikola/geojson": "^1.1"
+        "jmikola/geojson": "^1.1",
+        "bearlovescode/datamodels": "dev-main"
     },
     "extra": {
         "laravel": {
