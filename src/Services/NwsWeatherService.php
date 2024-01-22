@@ -20,7 +20,7 @@
 
         public function getObservation() : CurrentWeather
         {
-            $res = $this->api->observation(config('weather.station'));
+            $res = $this->api->observation($this->config->stationId);
 
             return new CurrentWeather($res);
         }
