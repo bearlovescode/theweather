@@ -38,16 +38,16 @@
 
         protected function hydrate(mixed $data): void
         {
-            $this->start = new Carbon($data['startTime']);
-            $this->end = new Carbon($data['endTime']);
-            $this->temp = (int) $data['temperature'];
-            $this->unit = $data['temperatureUnit'];
-            $this->trend = $data['temperatureTrend'];
-            $this->dewpoint = (float) $data['dewpoint']->value;
-            $this->humidity = (int) $data['humidity']->value;
-            $this->shortDescription = $data['shortForecast'];
-            $this->description = $data['detailedForecast'];
-            $this->icon = new Uri($data['icon']);
+            $this->start = new Carbon($data->startTime);
+            $this->end = new Carbon($data->endTime);
+            $this->temp = (int) $data->temperature;
+            $this->unit = $data->temperatureUnit;
+            $this->trend = $data->temperatureTrend;
+            $this->dewpoint = (float) $data->dewpoint->value;
+            $this->humidity = (int) $data->humidity->value;
+            $this->shortDescription = $data->shortForecast;
+            $this->description = $data->detailedForecast;
+            $this->icon = new Uri($data->icon);
 
             $customVars = [
                 'startTime',
@@ -64,7 +64,7 @@
             ];
 
             foreach ($customVars as $v)
-                unset($data[$v]);
+                unset($data->$v);
 
             parent::hydrate($data);
         }
