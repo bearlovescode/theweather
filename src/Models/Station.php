@@ -2,6 +2,7 @@
     namespace Bearlovescode\Theweather\Models;
 
     use Bearlovescode\Datamodels\Dto\Dto;
+    use GuzzleHttp\Psr7\Uri;
     use http\Url;
 
     class Station extends Dto
@@ -9,9 +10,9 @@
         public string $identifier = '';
         public string $name = '';
         public string $tz = 'UTC';
-        public Url $forecast;
-        public Url $county;
-        public Url $fireWeatherZone;
+        public Uri $forecast;
+        public Uri $county;
+        public Uri $fireWeatherZone;
 
 
         public function hydrate(mixed $data): void
@@ -22,9 +23,9 @@
             $this->type = $data->properties['@type'];
             $this->tz = $data->properties['timeZone'];
             $this->elevation = new Elevation($data->properties['elevation']);
-            $this->forecast = new Url($data->properties['forecast']);
-            $this->county = new Url($data->properties['county']);
-            $this->fireWeatherZone = new Url($data->properties['fireWeatherZone']);
+            $this->forecast = new Uri($data->properties['forecast']);
+            $this->county = new Uri($data->properties['county']);
+            $this->fireWeatherZone = new Uri($data->properties['fireWeatherZone']);
 
             unset(
                 $data->properties['@id'],
