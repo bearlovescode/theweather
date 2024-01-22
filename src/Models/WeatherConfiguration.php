@@ -5,5 +5,5 @@
 
     class WeatherConfiguration extends DataModel
     {
-        public string $stationId;
+        public ?string $stationId;
     }

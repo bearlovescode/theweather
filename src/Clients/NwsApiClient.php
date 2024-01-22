@@ -43,4 +43,14 @@
         {
 
         }
+
+        public function stations()
+        {
+            $res = $this->client->request('GET',
+                sprintf('/stations/'));
+
+            $data = $res->getBody()->getContents();
+
+            return GeoJson::jsonUnserialize(json_decode($data));
+        }
     }
