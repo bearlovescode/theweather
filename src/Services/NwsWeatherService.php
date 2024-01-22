@@ -4,6 +4,7 @@
     use Bearlovescode\Theweather\Clients\NwsApiClient;
     use Bearlovescode\Theweather\Models\CurrentWeather;
     use Bearlovescode\Theweather\Models\Forecast;
+    use Bearlovescode\Theweather\Models\Station;
     use Bearlovescode\Theweather\Models\WeatherConfiguration;
 
     class NwsWeatherService implements IWeatherService
@@ -32,9 +33,10 @@
 
         }
 
-        public function getStation() : mixed
+        public function getStation() : Station
         {
-            return $this->api->station($this->config->stationId);
+            $res = $this->api->station($this->config->stationId);
+            return new Station($res);
         }
 
     }

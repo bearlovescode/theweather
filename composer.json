@@ -20,6 +20,7 @@
     ],
     "require": {
         "php": "^8.1",
+        "ext-http": "*",
         "ml/json-ld": "^1.2",
         "guzzlehttp/guzzle": "^7.7",
         "illuminate/support": "^10.19",

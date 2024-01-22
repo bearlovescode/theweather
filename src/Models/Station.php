@@ -16,13 +16,22 @@
 
         public function hydrate(mixed $data): void
         {
-            switch(gettype($data)) {
-                case 'object':
-                    break;
+            $station = $data->properties;
 
-                default:
+            $this->id = $data->properties['@id'];
+            $this->type = $data->properties['@type'];
+            $this->tz = $data->properties['timeZone'];
+            $this->elevation = new Elevation($data->properties['elevation']);
+            $this->forecast = new Url($data->properties['forecast']);
+            $this->county = new Url($data->properties['county']);
+            $this->fireWeatherZone = new Url($data->properties['fireWeatherZone']);
 
-            }
+            unset(
+                $data->properties['@id'],
+                $data->properties['@type'],
+                $station['timeZone'],
+                $station
+            );
 
             parent::hydrate($data);
         }
