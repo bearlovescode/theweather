@@ -5,6 +5,7 @@
     use GeoJson\GeoJson;
     use GuzzleHttp\Client;
     use GuzzleHttp\Exception\ClientException;
+    use GuzzleHttp\Psr7\Uri;
     use Psr\Container\NotFoundExceptionInterface;
 
     class NwsApiClient
@@ -71,6 +72,15 @@
         {
             $res = $this->client->request('GET',
                 sprintf('/stations/'));
+
+            $data = $res->getBody()->getContents();
+
+            return GeoJson::jsonUnserialize(json_decode($data));
+        }
+
+        public function getDataViaUri(string|Uri $uri): GeoJson
+        {
+            $res = $this->client->request('GET', $uri);
 
             $data = $res->getBody()->getContents();
 

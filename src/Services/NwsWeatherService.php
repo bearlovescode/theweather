@@ -30,7 +30,12 @@
         {
             $res = $this->api->forecast($this->config->stationId);
             return new Forecast();
+        }
 
+        public function getStationForecast(Station $station): mixed
+        {
+            $res = $this->api->getDataViaUri($station->forecast);
+            return $res;
         }
 
         public function getStation() : Station
