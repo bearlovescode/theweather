@@ -4,6 +4,7 @@
     use Bearlovescode\Theweather\Clients\NwsApiClient;
     use Bearlovescode\Theweather\Models\CurrentWeather;
     use Bearlovescode\Theweather\Models\Forecast;
+    use Bearlovescode\Theweather\Models\NwsOffice;
     use Bearlovescode\Theweather\Models\Station;
     use Bearlovescode\Theweather\Models\WeatherConfiguration;
     use GuzzleHttp\Psr7\Uri;
@@ -43,6 +44,18 @@
         {
             $res = $this->api->station($this->config->stationId);
             return new Station($res);
+        }
+
+        public function getOfficeByLocation(): mixed
+        {
+            $gpData = $this->api->gridpoint($this->config->location->lat, $this->config->location->lon);
+
+            return $gpData;
+        }
+
+        public function getOffice() : NwsOffice
+        {
+
         }
 
     }

@@ -78,6 +78,12 @@
             return GeoJson::jsonUnserialize(json_decode($data));
         }
 
+        public function gridpoint(float $x, float $y): GeoJson
+        {
+            return $this->getDataViaUri(new Uri(sprintf('/points/%s/%s', $x, $y)));
+
+        }
+
         public function getDataViaUri(string|Uri $uri): GeoJson
         {
             $res = $this->client->request('GET', $uri);
