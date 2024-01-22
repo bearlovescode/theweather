@@ -44,7 +44,7 @@
             $this->unit = $data->temperatureUnit;
             $this->trend = $data->temperatureTrend;
             $this->dewpoint = (float) $data->dewpoint->value;
-            $this->humidity = (int) $data->humidity->value;
+            $this->humidity = (int) $data->relativeHumidity->value;
             $this->shortDescription = $data->shortForecast;
             $this->description = $data->detailedForecast;
             $this->icon = new Uri($data->icon);
