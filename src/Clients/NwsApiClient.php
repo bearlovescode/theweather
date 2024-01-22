@@ -80,7 +80,7 @@
 
         public function gridpoint(float $x, float $y): GeoJson
         {
-            return $this->getDataViaUri(new Uri(sprintf('/points/%s/%s', $x, $y)));
+            return $this->getDataViaUri(new Uri(sprintf('/points/%s,%s', $x, $y)));
 
         }
 
