@@ -35,8 +35,7 @@
 
         public function getStationForecast(Station $station): mixed
         {
-            $forecastUri = new Uri($station->forecast, 'forecast');
-            $res = $this->api->getDataViaUri($forecastUri);
+            $res = $this->api->getDataViaUri(new Uri(sprintf('%s/forecast', $station->forecast)));
             return $res;
         }
 
