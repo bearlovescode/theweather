@@ -6,6 +6,7 @@
     use Bearlovescode\Theweather\Models\Forecast;
     use Bearlovescode\Theweather\Models\Station;
     use Bearlovescode\Theweather\Models\WeatherConfiguration;
+    use GuzzleHttp\Psr7\Uri;
 
     class NwsWeatherService implements IWeatherService
     {
@@ -34,7 +35,8 @@
 
         public function getStationForecast(Station $station): mixed
         {
-            $res = $this->api->getDataViaUri($station->forecast);
+            $forecastUri = new Uri($station->forecast, 'forecast');
+            $res = $this->api->getDataViaUri($forecastUri);
             return $res;
         }
 
