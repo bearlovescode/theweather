@@ -21,7 +21,7 @@
         // property: temperatureUnit
         public string $unit;
         // property: temperatureTrend
-        public string $trend;
+        public ?string $trend;
         // property: dewpoint['value'];
         public float $dewpoint = 0.0;
         // property: relativeHumidity['value']
