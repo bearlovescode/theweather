@@ -23,6 +23,8 @@
 
                 $this->id = $props['@id'];
                 $this->type = $props['@type'];
+                $this->identifer = $props['stationIdentifier'];
+                $this->name = $props['name'];
                 $this->tz = $props['timeZone'];
                 $this->elevation = new Elevation($props['elevation']);
                 $this->forecast = new Uri($props['forecast']);
