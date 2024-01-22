@@ -1,6 +1,7 @@
 <?php
     namespace Bearlovescode\Theweather\Clients;
 
+    use Bearlovescode\Theweather\Models\Forecast;
     use GeoJson\GeoJson;
     use GuzzleHttp\Client;
     use GuzzleHttp\Exception\ClientException;
@@ -42,6 +43,28 @@
         public function forecast(string $stationId)
         {
 
+        }
+
+        public function zoneForecast(string $zoneId) : object
+        {
+            try {
+                $station = $this->station($zoneId);
+            }
+
+            catch (ClientException $e)
+            {
+
+            }
+        }
+
+        public function station(string $stationId) : object
+        {
+            $res = $this->client->request('GET',
+                sprintf('/stations/%s', $stationId));
+
+            $data = $res->getBody()->getContents();
+
+            return GeoJson::jsonUnserialize(json_decode($data));
         }
 
         public function stations()

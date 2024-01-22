@@ -31,4 +31,10 @@
             return new Forecast();
 
         }
+
+        public function getStation() : mixed
+        {
+            return $this->api->station($this->config->stationId);
+        }
+
     }
