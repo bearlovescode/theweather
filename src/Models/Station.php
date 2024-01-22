@@ -17,23 +17,18 @@
 
         public function hydrate(mixed $data): void
         {
-            $station = $data->properties;
+            if (method_exists($data, 'getProperties'))
+            {
+                $props = $data->getProperties();
 
-            $this->id = $data->properties['@id'];
-            $this->type = $data->properties['@type'];
-            $this->tz = $data->properties['timeZone'];
-            $this->elevation = new Elevation($data->properties['elevation']);
-            $this->forecast = new Uri($data->properties['forecast']);
-            $this->county = new Uri($data->properties['county']);
-            $this->fireWeatherZone = new Uri($data->properties['fireWeatherZone']);
+                $this->id = $props['@id'];
+                $this->type = $props['@type'];
+                $this->tz = $props['timeZone'];
+                $this->elevation = new Elevation($props['elevation']);
+                $this->forecast = new Uri($props['forecast']);
+                $this->county = new Uri($props['county']);
+                $this->fireWeatherZone = new Uri($props['fireWeatherZone']);
+            }
 
-            unset(
-                $data->properties['@id'],
-                $data->properties['@type'],
-                $station['timeZone'],
-                $station
-            );
-
-            parent::hydrate($data);
         }
     }
