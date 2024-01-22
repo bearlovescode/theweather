@@ -4,6 +4,7 @@
     use Bearlovescode\Theweather\Clients\NwsApiClient;
     use Bearlovescode\Theweather\Models\CurrentWeather;
     use Bearlovescode\Theweather\Models\Forecast;
+    use Bearlovescode\Theweather\Models\NwsGridpoint;
     use Bearlovescode\Theweather\Models\NwsOffice;
     use Bearlovescode\Theweather\Models\Station;
     use Bearlovescode\Theweather\Models\WeatherConfiguration;
@@ -46,11 +47,21 @@
             return new Station($res);
         }
 
-        public function getOfficeByLocation(): mixed
+        public function getGridpoint(): mixed
         {
-            $gpData = $this->api->gridpoint($this->config->location->lat, $this->config->location->lon);
+            return new NwsGridpoint($this->api->gridpoint($this->config->location->lat, $this->config->location->lon));
+        }
 
-            return $gpData;
+        public function getGridpointForecast(): mixed
+        {
+            $gp = $this->getGridpoint();
+
+
+        }
+
+        public function getForecastViaLocation() : mixed
+        {
+
         }
 
         public function getOffice() : NwsOffice
