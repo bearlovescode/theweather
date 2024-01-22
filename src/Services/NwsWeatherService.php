@@ -3,7 +3,7 @@
 
     use Bearlovescode\Theweather\Clients\NwsApiClient;
     use Bearlovescode\Theweather\Models\CurrentWeather;
-    use Bearlovescode\Theweather\Models\Forecast;
+    use Bearlovescode\Theweather\Models\NwsForecast;
     use Bearlovescode\Theweather\Models\NwsGridpoint;
     use Bearlovescode\Theweather\Models\NwsOffice;
     use Bearlovescode\Theweather\Models\Station;
@@ -29,10 +29,10 @@
             return new CurrentWeather($res);
         }
 
-        public function getForecast() : Forecast
+        public function getForecast() : NwsForecast
         {
             $res = $this->api->forecast($this->config->stationId);
-            return new Forecast();
+            return new NwsForecast();
         }
 
         public function getStationForecast(Station $station): mixed
@@ -52,9 +52,9 @@
             return new NwsGridpoint($this->api->gridpoint($this->config->location->lat, $this->config->location->lon));
         }
 
-        public function getGridpointForecast(): Forecast
+        public function getGridpointForecast(): NwsForecast
         {
-            return new Forecast($this->api->getDataViaUri($this->getGridpoint()->forecast));
+            return new NwsForecast($this->api->getDataViaUri($this->getGridpoint()->forecast));
         }
 
         public function getForecastViaLocation() : mixed

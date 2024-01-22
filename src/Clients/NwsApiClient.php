@@ -1,7 +1,7 @@
 <?php
     namespace Bearlovescode\Theweather\Clients;
 
-    use Bearlovescode\Theweather\Models\Forecast;
+    use Bearlovescode\Theweather\Models\NwsForecast;
     use GeoJson\GeoJson;
     use GuzzleHttp\Client;
     use GuzzleHttp\Exception\ClientException;

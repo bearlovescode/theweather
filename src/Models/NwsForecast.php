@@ -5,7 +5,7 @@
     use Carbon\Carbon;
     use GuzzleHttp\Psr7\Uri;
 
-    class Forecast extends DataModel
+    class NwsForecast extends DataModel
     {
         public Carbon $updated;
         public string $units;
@@ -31,7 +31,7 @@
 
                 if (count($props['periods']) > 0)
                     foreach($props['periods'] as $period)
-                        $this->periods[] = new ForecastPeriod($period);
+                        $this->periods[] = new NwsForecastPeriod($period);
             }
         }
 

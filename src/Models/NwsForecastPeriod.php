@@ -5,7 +5,7 @@
     use Carbon\Carbon;
     use GuzzleHttp\Psr7\Uri;
 
-    class ForecastPeriod extends DataModel
+    class NwsForecastPeriod extends DataModel
     {
         public int $number;
         public string $name;
