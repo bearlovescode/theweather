@@ -1,5 +1,5 @@
 <?php
-    namespace App\Models;
+    namespace Bearlovescode\Theweather\Models;
 
     use Bearlovescode\Datamodels\DataModel;
 
