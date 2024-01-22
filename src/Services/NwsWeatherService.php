@@ -52,11 +52,9 @@
             return new NwsGridpoint($this->api->gridpoint($this->config->location->lat, $this->config->location->lon));
         }
 
-        public function getGridpointForecast(): mixed
+        public function getGridpointForecast(): Forecast
         {
-            $gp = $this->getGridpoint();
-
-
+            return new Forecast($this->api->getDataViaUri($this->getGridpoint()->forecast));
         }
 
         public function getForecastViaLocation() : mixed
