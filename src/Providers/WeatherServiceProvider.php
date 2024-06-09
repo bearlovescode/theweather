@@ -2,6 +2,7 @@
     namespace Bearlovescode\Theweather\Providers;
 
     use Bearlovescode\Theweather\Clients\NwsApiClient;
+    use Bearlovescode\Theweather\Models\Location;
     use Bearlovescode\Theweather\Models\WeatherConfiguration;
     use Bearlovescode\Theweather\Services\NwsWeatherService;
     use Illuminate\Support\ServiceProvider;
@@ -23,7 +24,11 @@
         {
             $this->app->singleton(NwsWeatherService::class, function () {
                 $config = new WeatherConfiguration([
-                    'stationId' => env('NWS_STATION_ID')
+                    'stationId' => env('NWS_STATION_ID'),
+                    'location' => new Location([
+                        'lat' => env('LOC_LAT'),
+                        'lon' => env('LOC_LON')
+                    ])
                 ]);
                 $client = new NwsApiClient([
                     'agent' => env('NWS_APP_AGENT_NAME', env('APP_NAME')),
