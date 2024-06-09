@@ -8,7 +8,13 @@
         public string $description = '';
 
         public float $tempC = 0.0;
+        public float $minTempC = 0.0;
+        public float $maxTempC = 100.0;
+
+
         public float $tempF = 32.0;
+        public float $minTempF = 32.0;
+        public float $maxTempF = 212.0;
 
         public float $dewpointC = 0.0;
         public float $dewpointF = 0.0;
@@ -35,11 +41,16 @@
 
                 // Celsius
                 $this->tempC = (float)$props['temperature']->value;
+                $this->minTempC = (float)$props['minTemperatureLast24Hours']->value;
+                $this->maxTempC = (float)$props['maxTemperatureLast24Hours']->value;
+
                 $this->dewpointC = (float)$props['dewpoint']->value;
                 $this->heatIndexC = (float)$props['heatIndex']->value;
 
                 // Fahrenheit
                 $this->tempF = Temperature::C2F($this->tempC);
+                $this->minTempF = Temperature::C2F($this->minTempC);
+                $this->maxTempF = Temperature::C2F($this->maxTempC);
                 $this->dewpointF = Temperature::C2F($this->dewpointC);
                 $this->heatIndexF = Temperature::C2F($this->heatIndexC);
             }
